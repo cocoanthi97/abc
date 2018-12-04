@@ -1,0 +1,10 @@
+<%= form_for @book, :url => {:action => 'create'} do |f| %>
+1 <%= f.select :time1, @time_table[0] %><br>
+2<%= f.select :time2, @time_table[1]  %><br>
+3<%= f.select :time3, @time_table[2]  %><br>
+4<%= f.select :time4, @time_table[3]  %><br>
+5<%= f.select :time5, @time_table[4]  %><br>
+<%= f.hidden_field :date, :value => @book.date %>
+<%= f.submit "登録" %>
+
+<% end %>
