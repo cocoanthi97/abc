@@ -12,39 +12,41 @@ class BooksController < ApplicationController
 
 	def input_time
 	    @book = Book.new(params.require(:book).permit(:date))
-	    @time_table = TimeTableWeek.find(1).time_table_days[0].time_table_times
+	    @time_table = TimeTableWeek.find(1).time_table_days[@book.date.wday].time_table_times
     #	@subs = ['学科1','学科2','学科3','学科4','学科5','学科6']
 	end
 	
   def create
-	@book1 =  Book.new(params.require(:book).permit(:date))
-	@book1[:time] = 1
-	@book1[:subject] = params[:book][:time1]
+	create_book1_params =  params.require(:book).permit(:date)
+	create_book1_params[:time] = 1
+	create_book1_params[:subject] = Subject.find(params[:book][:time1])
+	@book1 = Book.new(create_book1_params)
 	
-	@book2  =  Book.new(params.require(:book).permit(:date))
-	@book2[:time] = 2
-	@book2[:subject] = params[:book][:time2]
+		create_book2_params =  params.require(:book).permit(:date)
+	create_book2_params[:time] = 2
+	create_book2_params[:subject] = Subject.find(params[:book][:time2])
+	@book2 = Book.new(create_book2_params)
 	
-	@book3   =  Book.new(params.require(:book).permit(:date))
-	@book3[:time] = 3
-	@book3[:subject] = params[:book][:time3]
+		create_book3_params =  params.require(:book).permit(:date)
+	create_book3_params[:time] = 3
+	create_book3_params[:subject] = Subject.find(params[:book][:time3])
+	@book3 = Book.new(create_book3_params)
 	
-	@book4  =  Book.new(params.require(:book).permit(:date))
-	@book4[:time] = 4
-	@book4[:subject] = params[:book][:time4]
+		create_book4_params =  params.require(:book).permit(:date)
+	create_book4_params[:time] = 4
+	create_book4_params[:subject] = Subject.find(params[:book][:time4])
+	@book4 = Book.new(create_book4_params)
 	
-	@book5  =  Book.new(params.require(:book).permit(:date))
-	@book5[:time] = 5
-	@book5[:subject] = params[:book][:time5]
-
-
-	#@book = Book.new(params.require(:book).permit(:date, :time, :kind))
+			create_book5_params =  params.require(:book).permit(:date)
+	create_book5_params[:time] = 5
+	create_book5_params[:subject] = Subject.find(params[:book][:time5])
+	@book5 = Book.new(create_book5_params)
+	
 	@book1.save
 	@book2.save
 	@book3.save
 	@book4.save
 	@book5.save
-	
 	redirect_to root_path
 					
 

@@ -1,0 +1,2 @@
+rake db:migrate:reset
+rails runner lib/tasks/set_subjects.rb

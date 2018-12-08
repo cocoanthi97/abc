@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181129071747) do
+ActiveRecord::Schema.define(version: 20181204090911) do
 
   create_table "books", force: :cascade do |t|
     t.date     "date"
@@ -19,19 +18,17 @@ ActiveRecord::Schema.define(version: 20181129071747) do
     t.integer  "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_books_on_subject_id"
   end
-
-  add_index "books", ["subject_id"], name: "index_books_on_subject_id"
 
   create_table "subject_time_table_times", force: :cascade do |t|
     t.integer  "subject_id"
     t.integer  "time_table_time_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["subject_id"], name: "index_subject_time_table_times_on_subject_id"
+    t.index ["time_table_time_id"], name: "index_subject_time_table_times_on_time_table_time_id"
   end
-
-  add_index "subject_time_table_times", ["subject_id"], name: "index_subject_time_table_times_on_subject_id"
-  add_index "subject_time_table_times", ["time_table_time_id"], name: "index_subject_time_table_times_on_time_table_time_id"
 
   create_table "subjects", force: :cascade do |t|
     t.string   "title"
@@ -46,9 +43,8 @@ ActiveRecord::Schema.define(version: 20181129071747) do
     t.integer  "time_table_week_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["time_table_times_id"], name: "index_time_table_days_on_time_table_times_id"
   end
-
-  add_index "time_table_days", ["time_table_times_id"], name: "index_time_table_days_on_time_table_times_id"
 
   create_table "time_table_times", force: :cascade do |t|
     t.integer  "time_table_day_id"
@@ -61,8 +57,19 @@ ActiveRecord::Schema.define(version: 20181129071747) do
     t.integer  "time_table_days_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["time_table_days_id"], name: "index_time_table_weeks_on_time_table_days_id"
   end
 
-  add_index "time_table_weeks", ["time_table_days_id"], name: "index_time_table_weeks_on_time_table_days_id"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
 end
