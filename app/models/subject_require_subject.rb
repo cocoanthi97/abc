@@ -1,0 +1,2 @@
+class SubjectRequireSubject < ApplicationRecord
+end

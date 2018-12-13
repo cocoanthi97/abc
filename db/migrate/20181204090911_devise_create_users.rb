@@ -5,7 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
     
     t.string :name
-    
+    t.references :book
+    t.references :passed_subjects
     
     
     

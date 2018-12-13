@@ -4,6 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.date :date
       t.integer :time
       t.references :subject, index: true, foreign_key: true
+      t.references :user
 
       t.timestamps null: false
     end

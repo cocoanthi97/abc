@@ -4,7 +4,10 @@ class CreateSubjects < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.references :time_table_times
+      t.references :time_tables
       t.timestamps null: false
+      
+      
     end
   end
 end
