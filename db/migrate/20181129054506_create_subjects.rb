@@ -4,9 +4,11 @@ class CreateSubjects < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.references :time_table_times
-      t.references :time_tables
-      t.references :require_subjects, index: true, foreign_key: true
-      t.references :required_subjects, index: true, foreign_key: true
+      t.integer :lecture #第一段階学科
+      t.integer :practice #第一段階技能
+
+    #  t.references :require_subject, index: true, foreign_key: true
+
       t.timestamps null: false
       
       

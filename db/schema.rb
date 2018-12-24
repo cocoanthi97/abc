@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181213083105) do
+ActiveRecord::Schema.define(version: 20181220112724) do
 
   create_table "books", force: :cascade do |t|
     t.date     "date"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(version: 20181213083105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_books_on_subject_id"
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string   "name"
+    t.string   "holder_license"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_instructors_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_instructors_on_reset_password_token", unique: true
   end
 
   create_table "subject_passed_subjects", force: :cascade do |t|
@@ -32,12 +46,8 @@ ActiveRecord::Schema.define(version: 20181213083105) do
   end
 
   create_table "subject_require_subjects", force: :cascade do |t|
-    t.integer  "require_subject_id"
-    t.integer  "required_subject_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["require_subject_id"], name: "index_subject_require_subjects_on_require_subject_id"
-    t.index ["required_subject_id"], name: "index_subject_require_subjects_on_required_subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subject_time_table_times", force: :cascade do |t|
@@ -53,13 +63,10 @@ ActiveRecord::Schema.define(version: 20181213083105) do
     t.string   "title"
     t.string   "description"
     t.integer  "time_table_times_id"
-    t.integer  "time_tables_id"
-    t.integer  "require_subjects_id"
-    t.integer  "required_subjects_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["require_subjects_id"], name: "index_subjects_on_require_subjects_id"
-    t.index ["required_subjects_id"], name: "index_subjects_on_required_subjects_id"
+    t.integer  "lecture"
+    t.integer  "practice"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "time_table_days", force: :cascade do |t|
@@ -86,8 +93,12 @@ ActiveRecord::Schema.define(version: 20181213083105) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.string   "holder_license"
     t.integer  "book_id"
     t.integer  "passed_subjects_id"
+    t.integer  "lecture"
+    t.integer  "practice"
+    t.integer  "test"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

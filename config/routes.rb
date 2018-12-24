@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :instructors
   get 'mypages/show'
 
-  devise_for :users
+  devise_for :users, :controllers => {
+  :registrations => "users/registrations"
+}
 root :to => 'tops#index'
 #get '/tops' , to: 'tops#index'
 get '/books' , to: 'books#input_date'

@@ -1,9 +1,9 @@
 <%= form_for @book, :url => {:action => 'create'} do |f| %>
 1<%= f.collection_select :time1, @time_table[0].subjects, :id, :title %><br>
-2<%= f.collection_select :time2, TimeTableWeek.find(1).time_table_days[0].time_table_times[1].subjects, :id, :title %><br>
-3<%= f.collection_select :time3, TimeTableWeek.find(1).time_table_days[0].time_table_times[2].subjects, :id, :title %><br>
-4<%= f.collection_select :time4, TimeTableWeek.find(1).time_table_days[0].time_table_times[3].subjects, :id, :title %><br>
-5<%= f.collection_select :time5, TimeTableWeek.find(1).time_table_days[0].time_table_times[4].subjects, :id, :title %><br>
+2<%= f.collection_select :time2, @time_table[1].subjects, :id, :title %><br>
+3<%= f.collection_select :time3, @time_table[2].subjects, :id, :title %><br>
+4<%= f.collection_select :time4, @time_table[3].subjects, :id, :title %><br>
+5<%= f.collection_select :time5, @time_table[4].subjects, :id, :title %><br>
 <%= f.hidden_field :date, :value => @book.date %>
 <%= f.submit "登録" %>
 

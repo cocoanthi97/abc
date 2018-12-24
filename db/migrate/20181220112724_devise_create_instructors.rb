@@ -1,21 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsers < ActiveRecord::Migration[5.0]
+class DeviseCreateInstructors < ActiveRecord::Migration[5.0]
   def change
-    create_table :users do |t|
-    
-    t.string :name
-    t.string :holder_license
-    t.references :book
-    t.references :passed_subjects
-    t.string :holder_license
-     t.integer :lecture #学科
-      t.integer :practice #技能
-      t.integer :test    
-      
-    
-    
-    
+    create_table :instructors do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -45,13 +32,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      t.string :name
+      t.string :holder_license
 
       t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
-    # add_index :users, :unlock_token,         unique: true
+    add_index :instructors, :email,                unique: true
+    add_index :instructors, :reset_password_token, unique: true
+    # add_index :instructors, :confirmation_token,   unique: true
+    # add_index :instructors, :unlock_token,         unique: true
   end
 end
