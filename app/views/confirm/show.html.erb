@@ -1,0 +1,22 @@
+<head>
+    <meta charset="utf-8">
+</head>
+    <h1>予約確認</h1>
+	<%= link_to "予約", :controller => "books", :action => "input_date" %> <br>
+<body>
+<%= month_calendar do |date| %>
+  <%= date.day %><br>
+  
+      <% @user.books.each do |book| %>
+             <% if  date == book.date && book.subject.lecture != book.subject.practice%>
+           		 	<%= book.time %>
+           	 		<%= book.subject.title %>
+       				<%= book.subject.description %>
+                        <% if  date > Time.current.yesterday %>
+                            <%= button_to "キャンセル", {controller: "books", action: "destroy", id:book.id}, {method: :delete, data:{confirm: "キャンセルしますか？"}} %>
+                        <%end%>
+     		    	<br>
+ 	   		 <%end%>
+ 	   <%end%>
+	  
+<% end %>

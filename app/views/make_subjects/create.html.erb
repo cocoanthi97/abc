@@ -1,0 +1,25 @@
+<%= form_for @subject, url: {action: :create} do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :subject_name %>
+  </div>
+ 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :subject_description %>
+  </div>
+ 
+   <div class="field">
+    <%= form.label :lecture %>
+	<%= f.number_field :lecture,max:100 %>
+  </div>
+  
+       <div class="field">
+    <%= form.label :practice %>
+	<%= f.number_field :practice,max:100 %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

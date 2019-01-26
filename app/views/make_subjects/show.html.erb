@@ -1,0 +1,25 @@
+<br><p1>時間割編集ページ</p1>
+
+<body>
+<table>
+<br>
+	<% @week.each do |week| %> <!-- ７日間取得 -->
+		<font size="5"><%= @weeks[@count_week] %></font><br>
+   			<% week.time_table_times.each do |time| %><!-- １日の時限数取得 -->
+   				<b><%= @times[@count_time] %></b><br>
+   					<% time.subjects.each do |subject| %><!-- １日の教科取得 -->
+                        <% if subject.lecture != 99 %>
+   						     <tr><%= subject.title %>
+   						     <%= button_to "削除", {controller: "subjects", action: "destroy", id:subject.id}, {method: :delete, data:{confirm: "削除しますか？"}} %></tr>
+   						<% end %>
+   					<% end %><br>
+   				<% @count_time = @count_time + 1 %>
+   				     <% if @count_time == 5 %>
+   				         <% @count_time = 0 %>
+   				      <% end %>
+   			<% end %>
+   		<% @count_week = @count_week + 1 %>
+   		<%= link_to "追加", controller: "subjects", action: "new" %><br></tr><br><br>
+	<% end %>
+</table>
+</body>

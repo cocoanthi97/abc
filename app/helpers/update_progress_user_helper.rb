@@ -1,0 +1,2 @@
+module UpdateProgressUserHelper
+end

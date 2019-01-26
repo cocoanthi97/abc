@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
+<body style="background: url(/assets/car_background.jpg) fixed;">
 <head>
-  <title>Sample</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <title>dispatch</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 </head>
 <body>
  
@@ -13,6 +15,7 @@
 
   <% if user_signed_in? %>
     ログインユーザー： <%= current_user.email %>
+    <%= link_to "マイページ", mypage_path(current_user) %>
     <%= link_to 'アカウント変更', edit_user_registration_path %>
     <%= link_to "ログアウト", destroy_user_session_path %>
   <% else %>
@@ -20,8 +23,7 @@
     <%= link_to "新規作成", new_user_registration_path %>
     <%= link_to "ログイン", new_user_session_path %>
   <% end %>
-  
 <%= yield %>
-
 </body>
+
 </html>

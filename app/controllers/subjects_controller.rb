@@ -1,5 +1,9 @@
 class SubjectsController < ApplicationController
+before_action :authenticate_user!
+
   def new
+      if current_user.id != 1 then
+        redirect_to root_path, notice: '管理者以外アクセスできません'end
   @subject = Subject.new
   end
 
@@ -10,5 +14,11 @@ class SubjectsController < ApplicationController
   end
 
   def update
+  end
+  
+  def destroy
+    @subjects =  Subject.find(params[:id])
+	@subjects.destroy
+    redirect_to make_subjects_show_path,  notice: '削除しました。'
   end
 end

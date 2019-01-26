@@ -1,0 +1,2 @@
+module MakeProgressUserHelper
+end

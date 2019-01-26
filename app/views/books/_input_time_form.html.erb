@@ -1,10 +1,17 @@
+<h3>予約</h3>
+<p>予約する教科を選択してください。</p>
 <%= form_for @book, :url => {:action => 'create'} do |f| %>
-1<%= f.collection_select :time1, @time_table[0].subjects, :id, :title %><br>
-2<%= f.collection_select :time2, @time_table[1].subjects, :id, :title %><br>
-3<%= f.collection_select :time3, @time_table[2].subjects, :id, :title %><br>
-4<%= f.collection_select :time4, @time_table[3].subjects, :id, :title %><br>
-5<%= f.collection_select :time5, @time_table[4].subjects, :id, :title %><br>
-<%= f.hidden_field :date, :value => @book.date %>
-<%= f.submit "登録" %>
-
+	<% if @book.errors.any? %>
+ 		 <div class="error_explanation">
+ 		<h4> 選択が間違っています。</h4>
+ 		 ・実地は順番に受講しなければなりません。<br>
+ 		 </div>
+ 	<% end %>
+	1<%= f.collection_select :time1, @time_table[0], :id, :title %><br>
+	2<%= f.collection_select :time2, @time_table[1], :id, :title %><br>
+	3<%= f.collection_select :time3, @time_table[2], :id, :title %><br>
+	4<%= f.collection_select :time4, @time_table[3], :id, :title %><br>
+	5<%= f.collection_select :time5, @time_table[4], :id, :title %><br>
+	<%= f.hidden_field :date, :value => @book.date %>
+	<%= f.submit "登録" %>
 <% end %>

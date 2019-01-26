@@ -1,0 +1,16 @@
+current directory: /Users/yaguchi/work/dispatch/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/Users/yaguchi/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20190123-77060-11coinx.rb extconf.rb
+
+current directory: /Users/yaguchi/work/dispatch/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/yaguchi/work/dispatch/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/yaguchi/work/dispatch/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

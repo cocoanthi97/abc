@@ -1,0 +1,28 @@
+<%= form_for @progress_user, url: {:action => :update} do |f| %>
+
+<h2>教習生進度編集ページ</h2>
+<table border="1">
+		<tr>
+			<th>ID</th><th>氏名</th><th>学科進度</th><th>実地進度</th>
+		</tr>	
+	<% @user_all.each do |user| %>
+		<%= fields_for "user[]", @progress_user do |fi| %>
+		<tr>
+			<td><%= user.id %></td>
+			<td><%= @user_name = user.name %></td>
+			<td><%= fi.number_field :lecture,min:0,max:10,value: user.lecture %></td>
+			<td><%= fi.number_field :practice,min:0,max:98,value: user.practice %></td>
+					<% end %>
+		</tr>
+			<br>
+
+	<% end %>
+</table>
+<%= f.submit "更新" %>
+<% end %>
+
+
+
+
+
+
